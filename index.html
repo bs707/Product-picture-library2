@@ -6,10 +6,12 @@
     <title>SocialCam Master Pro</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* 基礎重設，防止寬度溢出 */
         * { box-sizing: border-box; }
         body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #f5f5f7; overflow-x: hidden; }
         
+        /* 置中容器 */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
         /* Hero 區塊 */
         .hero-section {
             position: relative;
@@ -19,19 +21,13 @@
                         url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            padding: 100px 20px 150px 20px;
+            padding: 100px 0 150px 0;
             text-align: center;
         }
 
-        .hero-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        /* 響應式標題：在大螢幕 72px，小螢幕自動縮小至 32px */
         .main-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(32px, 8vw, 72px);
+            font-size: clamp(32px, 8vw, 62px); /* 防止寬度裁切的關鍵 */
             font-weight: 900;
             font-style: italic;
             text-transform: uppercase;
@@ -39,26 +35,16 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin: 0 0 20px 0;
             filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
             line-height: 1.1;
         }
 
-        .sub-title {
-            color: rgba(255,255,255,0.85);
-            font-size: clamp(16px, 3vw, 19px);
-            max-width: 600px;
-            margin: 0 auto 60px auto;
-            line-height: 1.6;
-        }
-
-        /* 網格卡片：寬度不足時自動切換為單欄 */
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
+            margin-top: 50px;
         }
 
         .card {
@@ -71,64 +57,52 @@
             text-align: left;
         }
 
-        /* 影片展示區 */
-        .video-section {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 120px 20px;
-            text-align: center;
+        /* 影片章節通用樣式 */
+        .video-chapter { text-align: center; padding: 100px 0; }
+        .video-chapter h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(24px, 5vw, 34px);
+            font-style: italic;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+        .video-chapter p { color: #515154; font-size: 18px; line-height: 1.6; max-width: 750px; margin: 0 auto 40px auto; }
+        .video-box { border-radius: 32px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.12); background: #000; }
 
-        .video-wrapper {
-            border-radius: 32px;
-            overflow: hidden;
-            background: #000;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.12);
-            margin-top: 40px;
-        }
-
-        /* 比較表格 */
+        /* 比較表 */
         .comparison-section {
-            background: linear-gradient(rgba(1, 8, 22, 0.9), rgba(1, 8, 22, 1)), 
+            background: linear-gradient(rgba(1, 8, 22, 0.85), rgba(1, 8, 22, 0.95)),
                         url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');
             background-size: cover;
-            padding: 100px 20px;
+            padding: 100px 0;
             text-align: center;
         }
-
         .table-container {
-            max-width: 750px;
-            margin: 0 auto;
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(40px);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
             border-radius: 32px;
             overflow: hidden;
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            color: white;
-        }
-
+        table { width: 100%; border-collapse: collapse; color: white; }
         th, td { padding: 22px; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-        /* 按鈕樣式 */
-        .cta-button {
+        .btn-cta {
             display: inline-block;
             background: linear-gradient(90deg, #007AFF, #00C6FF);
             color: white;
-            padding: 18px 50px;
+            padding: 18px 55px;
             border-radius: 50px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
             text-decoration: none;
-            margin-top: 50px;
+            margin-top: 60px;
             box-shadow: 0 15px 35px rgba(0,122,255,0.4);
+            text-transform: uppercase;
         }
 
-        /* 底部裝飾修正 */
         .clip-v {
             width: 100%; height: 100px; background: #f5f5f7;
             clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%);
@@ -139,57 +113,83 @@
 <body>
 
     <div class="hero-section">
-        <div class="hero-content">
+        <div class="container">
             <h1 class="main-title">SocialCam Master Pro</h1>
-            <p class="sub-title">The ultimate workflow for social media content creators in Blender</p>
+            <p style="color: rgba(255,255,255,0.85); font-size: 19px; max-width: 600px; margin: 0 auto;">The ultimate workflow for social media content creators in Blender</p>
             
             <div class="feature-grid">
                 <div class="card">
-                    <span style="background:#007AFF; color:white; padding:5px 12px; border-radius:10px; font-size:11px; font-weight:700;">VIEWPORT FX</span>
+                    <span style="background:#007AFF; color:white; padding:5px 12px; border-radius:12px; font-size:11px; font-weight:700;">VIEWPORT FX</span>
                     <h3 style="font-family:'Orbitron'; color:#fff; font-style:italic; margin-top:20px;">INSTANT RETRO CRT</h3>
-                    <p style="color:#bbb; font-size:14px; line-height:1.6;">Achieve professional cinematic aesthetics instantly. Experience scanlines and vignettes directly in your viewport.</p>
+                    <p style="color:#bbb; font-size:15px; line-height:1.7;">Achieve professional cinematic aesthetics instantly. Experience scanlines and vignette effects directly in your viewport.</p>
                 </div>
                 <div class="card">
-                    <span style="background:#A855F7; color:white; padding:5px 12px; border-radius:10px; font-size:11px; font-weight:700;">WORKFLOW</span>
+                    <span style="background:#A855F7; color:white; padding:5px 12px; border-radius:12px; font-size:11px; font-weight:700;">WORKFLOW</span>
                     <h3 style="font-family:'Orbitron'; color:#fff; font-style:italic; margin-top:20px;">SMART BOOKMARKS</h3>
-                    <p style="color:#bbb; font-size:14px; line-height:1.6;">Automate your scene management. Save camera properties and switch shots with a single click.</p>
+                    <p style="color:#bbb; font-size:15px; line-height:1.7;">Automate scene management. Save camera properties and switch between different shots with one click.</p>
                 </div>
             </div>
         </div>
         <div class="clip-v"></div>
     </div>
 
-    <div class="video-section">
-        <h2 style="font-family:'Orbitron'; font-size:32px; color:#0072ff; font-style:italic;">RESOLUTION & FOCUS PRESETS</h2>
-        <p style="color:#515154; max-width:700px; margin:20px auto;">Seamlessly switch between aspect ratios for TikTok, Instagram, and YouTube. Ensure your composition is always perfect.</p>
-        <div class="video-wrapper">
-            <video width="100%" autoplay loop muted playsinline>
-                <source src="https://github.com/bs707/Product-picture-library2/raw/main/View%20switching%20.mp4" type="video/mp4">
-            </video>
+    <div class="container" style="padding: 100px 20px;">
+        
+        <div class="video-chapter">
+            <h4 style="background: linear-gradient(90deg, #00c6ff, #0072ff); -webkit-background-clip:text;">Resolution & Focus Presets</h4>
+            <p>Seamlessly switch between aspect ratios for TikTok, Instagram, and YouTube. Ensure your composition is perfect for every platform.</p>
+            <div class="video-box">
+                <video width="100%" autoplay loop muted playsinline style="display:block;">
+                    <source src="https://github.com/bs707/Product-picture-library2/raw/main/View%20switching%20.mp4" type="video/mp4">
+                </video>
+            </div>
         </div>
+
+        <div class="video-chapter">
+            <h4 style="background: linear-gradient(90deg, #f093fb, #f5576c); -webkit-background-clip:text;">Smart Camera Bookmarks</h4>
+            <p>Precisely capture camera positions to timeline markers. Manage multi-angle scenes effortlessly and switch views instantly.</p>
+            <div class="video-box">
+                <video width="100%" autoplay loop muted playsinline style="display:block;">
+                    <source src="https://github.com/bs707/Product-picture-library2/raw/main/Camera%20bookmark.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+        <div class="video-chapter">
+            <h4 style="background: linear-gradient(90deg, #FAD961, #F76B1C); -webkit-background-clip:text;">Real-time Viewport Compositing</h4>
+            <p>Implement professional real-time color correction and post-processing effects directly within the Blender viewport.</p>
+            <div class="video-box">
+                <video width="100%" autoplay loop muted playsinline style="display:block;">
+                    <source src="https://github.com/bs707/Product-picture-library2/raw/main/Instant%20color%20correction.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
     </div>
 
     <div class="comparison-section">
-        <h2 style="font-family:'Orbitron'; color:#fff; font-size:42px; margin-bottom:50px; font-style:italic;">COMPARISON</h2>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr style="background: rgba(255,255,255,0.12);">
-                        <th style="text-align:left;">Features</th>
-                        <th>Free</th>
-                        <th style="color:#4facfe;">Pro</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td style="text-align:left;">Resolution Presets</td><td>✓</td><td>✓</td></tr>
-                    <tr><td style="text-align:left;">Focus Tools</td><td>✓</td><td>✓</td></tr>
-                    <tr><td style="text-align:left;">Camera Bookmarks</td><td style="opacity:0.4;">✕</td><td>✓</td></tr>
-                    <tr><td style="text-align:left;">Cinematic Filters</td><td style="opacity:0.4;">✕</td><td>✓</td></tr>
-                    <tr><td style="text-align:left;">Pro Color Panel</td><td style="opacity:0.4;">✕</td><td>✓</td></tr>
-                </tbody>
-            </table>
+        <div class="container">
+            <h2 style="font-family:'Orbitron'; color:#fff; font-size:46px; font-style:italic; margin-bottom:60px;">COMPARISON</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr style="background: rgba(255, 255, 255, 0.12);">
+                            <th style="text-align:left;">Features</th>
+                            <th>Free</th>
+                            <th style="color:#4facfe;">Pro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="text-align:left;">Resolution Presets</td><td>✓</td><td>✓</td></tr>
+                        <tr><td style="text-align:left;">Focus Presets</td><td>✓</td><td>✓</td></tr>
+                        <tr><td style="text-align:left;">Camera Bookmarks</td><td style="opacity:0.4;">✕</td><td>✓</td></tr>
+                        <tr><td style="text-align:left;">Cinematic Filters</td><td style="opacity:0.4;">✕</td><td>✓</td></tr>
+                        <tr><td style="text-align:left;">Color Adjustment Panel</td><td style="opacity:0.4;">✕</td><td>✓</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <a href="#" class="btn-cta">Get Master Pro — $29</a>
         </div>
-        <a href="#" class="cta-button">GET MASTER PRO — $29</a>
     </div>
 
 </body>
