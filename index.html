@@ -26,12 +26,12 @@
         .hero-section {
             position: relative;
             width: 100%;
-            min-height: 850px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            min-height: 700px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            padding: 100px 0 150px 0;
+            padding: 120px 0 100px 0;
             text-align: center;
         }
 
@@ -50,35 +50,48 @@
             line-height: 1.1;
         }
 
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .card {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 40px;
+        /* Story Section Styling */
+        .story-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
             border-radius: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            text-align: left;
+            margin-top: -100px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            line-height: 1.8;
+            color: #333;
         }
 
-        .video-chapter { text-align: center; padding: 60px 0; } /* 縮小了上下間距 */
+        .story-content h2 {
+            font-family: 'Orbitron';
+            font-size: 24px;
+            color: #007AFF;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .story-text {
+            font-size: 17px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+        }
+
+        .video-chapter { text-align: center; padding: 80px 0 60px 0; }
         .video-chapter h4 {
             font-family: 'Orbitron', sans-serif;
             font-size: clamp(24px, 5vw, 34px);
             font-style: italic;
             text-transform: uppercase;
-            margin-bottom: 15px;
-            background-clip: text;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .video-chapter p { color: #515154; font-size: 18px; line-height: 1.6; max-width: 750px; margin: 0 auto 40px auto; }
         
         .video-box { 
             border-radius: 32px; 
@@ -88,19 +101,12 @@
             width: 100%;
         }
 
-        .clip-v {
-            width: 100%; height: 100px; background: #f5f5f7;
-            clip-path: polygon(0 0, 50% 100%, 100% 0, 100% 100%, 0 100%);
-            position: absolute; bottom: -1px; left: 0;
-        }
-
-        /* 外部嵌入內容容器 */
         .external-content {
             width: 100%;
             border-radius: 24px;
             overflow: hidden;
             background: #000;
-            margin-bottom: 40px; /* 僅保留適度底部留白 */
+            margin-bottom: 40px;
         }
     </style>
 </head>
@@ -109,27 +115,28 @@
     <div class="hero-section">
         <div class="container">
             <h1 class="main-title">SocialCam Master Pro</h1>
-            <p style="color: rgba(255,255,255,0.85); font-size: 19px; max-width: 600px; margin: 0 auto;">The ultimate workflow for social media content creators in Blender</p>
-            
-            <div class="feature-grid">
-                <div class="card">
-                    <span style="background:#007AFF; color:white; padding:5px 12px; border-radius:12px; font-size:11px; font-weight:700;">VIEWPORT FX</span>
-                    <h3 style="font-family:'Orbitron'; color:#fff; font-style:italic; margin-top:20px;">INSTANT RETRO CRT</h3>
-                    <p style="color:#bbb; font-size:15px; line-height:1.7;">Achieve professional cinematic aesthetics instantly. Experience scanlines and vignette effects directly in your viewport.</p>
-                </div>
-                <div class="card">
-                    <span style="background:#A855F7; color:white; padding:5px 12px; border-radius:12px; font-size:11px; font-weight:700;">WORKFLOW</span>
-                    <h3 style="font-family:'Orbitron'; color:#fff; font-style:italic; margin-top:20px;">SMART BOOKMARKS</h3>
-                    <p style="color:#bbb; font-size:15px; line-height:1.7;">Automate scene management. Save camera properties and switch between different shots with one click.</p>
-                </div>
-            </div>
+            <p style="color: rgba(255,255,255,0.85); font-size: 19px; max-width: 600px; margin: 0 auto;">Beyond a Tool: A Creator's Vision</p>
         </div>
-        <div class="clip-v"></div>
     </div>
 
     <div class="container">
+        <div class="story-content">
+            <h2>The Birth of Instant Aesthetics</h2>
+            <div class="story-text">
+                <p>
+                    As a 3D artist focusing on social media, I spent years trapped in a repetitive cycle: rendering, moving to post-processing for CRT effects, realizing the lighting was wrong, and heading back to Blender. **I created SocialCam Master Pro to end this friction.**
+                </p>
+                <p>
+                    I wanted to see the <i>final result</i> while I was still in the creative flow. This add-on started as a personal script to automate my camera bookmarks and resolution presets. It evolved into a powerful Viewport FX engine when I realized that <b>real-time inspiration is the most valuable asset a creator has.</b>
+                </p>
+                <p>
+                    Whether it's the instant nostalgia of the Retro CRT mode or the surgical precision of Smart Bookmarks, this tool was built in the trenches of daily production—refined through countless social media renders before ever reaching your hands.
+                </p>
+            </div>
+        </div>
+
         <div class="video-chapter">
-            <h4 style="background: linear-gradient(90deg, #00c6ff, #0072ff); -webkit-background-clip:text;">Resolution & Focus Presets</h4>
+            <h4>Live Workflow Preview</h4>
             <div class="video-box">
                 <video width="100%" autoplay loop muted playsinline style="display:block;">
                     <source src="View%20switching%20.mp4" type="video/mp4">
