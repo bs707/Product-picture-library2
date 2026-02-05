@@ -48,16 +48,29 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px;
-            margin: 0 0 30px 0;
+            margin: 0 0 10px 0;
             filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
             line-height: 1.1;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #007AFF, #00D4FF);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
         }
 
         .hero-description {
             color: rgba(255,255,255,0.9); 
             font-size: 17px; 
             max-width: 800px; 
-            margin: 0 auto; 
+            margin: 0 auto 40px auto; 
             line-height: 1.8;
             text-align: center;
         }
@@ -77,6 +90,98 @@
             border-radius: 32px;
             border: 1px solid rgba(255, 255, 255, 0.12);
             text-align: left;
+        }
+
+        /* 規格區塊 */
+        .specs-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .spec-card {
+            background: #f8f9fa;
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .spec-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            color: #1a1a1a;
+            margin: 0 0 20px 0;
+            font-style: italic;
+        }
+
+        .spec-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .spec-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            color: #515154;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .spec-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* 安裝指南區塊 */
+        .guide-section {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .guide-steps {
+            counter-reset: step-counter;
+            max-width: 800px;
+            margin: 50px auto 0 auto;
+        }
+
+        .guide-step {
+            position: relative;
+            padding: 30px 0 30px 100px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .guide-step:last-child {
+            border-bottom: none;
+        }
+
+        .guide-step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #007AFF, #00D4FF);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
         }
 
         /* 影片章節樣式 */
@@ -147,6 +252,49 @@
         .video-box video.loaded {
             opacity: 1;
         }
+
+        /* 通用樣式 */
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(28px, 6vw, 42px);
+            text-align: center;
+            margin: 0 0 20px 0;
+            color: #1a1a1a;
+            font-style: italic;
+        }
+
+        .section-description {
+            text-align: center;
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #007AFF20, #00D4FF20);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 768px) {
+            .guide-step {
+                padding: 30px 0 30px 70px;
+            }
+            
+            .guide-step::before {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .spec-card, .card {
+                padding: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -154,9 +302,9 @@
     <div class="hero-section">
         <div class="container">
             <h1 class="main-title">SocialCam Master Pro</h1>
+            <div class="version-badge">Version 1.0.0 (2026) | Compatible with Blender 4.0-4.5</div>
             <div class="hero-description">
-                After working in 3D animation for years, I got tired of always having to change the camera aspect ratio by hand. I also noticed that there was no simple "flip aspect ratio" button. So, I developed this plugin! I also added controls for colour and filters that you can use to make simple changes to the visual effects.<br><br>
-                I had a great idea while I was working on it: wouldn't it be great if the camera could jump straight to a certain photo like a bookmark? This would mean you wouldn't have to scroll through the timeline forever and get lost between different cameras. I added this feature, and it completely changed the way I work.
+                SocialCam Master Pro + Instant FX is an all-in-one camera management and post-production toolkit for Blender. Designed specifically for social media creators, animators, and designers, it simplifies camera setup, scene bookmarking, and real-time viewport color grading.
             </div>
 
             <div class="feature-grid">
@@ -170,9 +318,90 @@
                     <h3 style="font-family:'Orbitron'; color:#fff; font-style:italic; margin-top:20px;">SMART BOOKMARKS</h3>
                     <p style="color:#bbb; font-size:15px; line-height:1.7;">Automate scene management. Save camera properties and switch between different shots with one click.</p>
                 </div>
+                <div class="card">
+                    <span style="background:#00B894; color:white; padding:5px 12px; border-radius:12px; font-size:11px; font-weight:700;">EFFICIENCY</span>
+                    <h3 style="font-family:'Orbitron'; color:#fff; font-style:italic; margin-top:20px;">QUICK START WORKFLOW</h3>
+                    <p style="color:#bbb; font-size:15px; line-height:1.7;">Set aspect ratio, compose shots, save views, and apply FX in minutes. Perfect for fast-paced social media production.</p>
+                </div>
             </div>
         </div>
         <div class="clip-v"></div>
+    </div>
+
+    <div class="specs-section">
+        <div class="container">
+            <h2>Complete Feature Breakdown</h2>
+            <p class="section-description">Everything you need for professional camera management and real-time post-processing in Blender.</p>
+            
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h3 style="background: linear-gradient(90deg, #007AFF, #00D4FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Camera Master</h3>
+                    <p style="color:#666; margin-bottom:20px;">Manage resolution, composition, and camera properties for perfect framing.</p>
+                    <ul class="spec-list">
+                        <li><strong>Resolution Presets:</strong> 21:9 (Cinematic), 9:16 (TikTok/Reels), 1:1 (Instagram), 3:4 (Portrait)</li>
+                        <li><strong>Swap (N):</strong> Quick-toggle to flip aspect ratio instantly</li>
+                        <li><strong>Composition Guides:</strong> Rule of Thirds, Golden Spiral, Diagonals</li>
+                        <li><strong>Passepartout:</strong> Control opacity outside camera frame</li>
+                    </ul>
+                </div>
+                
+                <div class="spec-card">
+                    <h3 style="background: linear-gradient(90deg, #A855F7, #EC4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Camera Bookmarks</h3>
+                    <p style="color:#666; margin-bottom:20px;">Manage multiple perspectives and timeline positions with precision.</p>
+                    <ul class="spec-list">
+                        <li><strong>Record View:</strong> Save camera coordinates, rotation, and frame number</li>
+                        <li><strong>Jump:</strong> Instantly teleport to saved bookmarks</li>
+                        <li><strong>Sync with Timeline:</strong> Automatic marker synchronization</li>
+                        <li><strong>Multi-angle Management:</strong> Switch between shots effortlessly</li>
+                    </ul>
+                </div>
+                
+                <div class="spec-card">
+                    <h3 style="background: linear-gradient(90deg, #FAD961, #F76B1C); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Instant FX</h3>
+                    <p style="color:#666; margin-bottom:20px;">Real-time post-production directly in the 3D Viewport.</p>
+                    <ul class="spec-list">
+                        <li><strong>Color Grading:</strong> Saturation, Contrast, RGB Gain controls</li>
+                        <li><strong>Tone Curve:</strong> Custom RGB curves for advanced lighting</li>
+                        <li><strong>CRT Mode:</strong> Curvature, Scanlines, RGB Pixel Splitting</li>
+                        <li><strong>Film Grain:</strong> Procedural noise for cinematic feel</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="guide-section">
+        <div class="container">
+            <h2>Get Started in 5 Minutes</h2>
+            <p class="section-description">Follow this quick start guide to integrate SocialCam Master Pro into your workflow.</p>
+            
+            <div class="guide-steps">
+                <div class="guide-step">
+                    <h3 style="color:#1a1a1a; margin-top:0;">Installation</h3>
+                    <p style="color:#515154; line-height:1.7;">Open Blender → Edit > Preferences > Add-ons → Install → Select .zip file → Enable "SocialCam Master Pro". Access via 3D Viewport Sidebar (Press <span class="highlight">N</span>).</p>
+                </div>
+                
+                <div class="guide-step">
+                    <h3 style="color:#1a1a1a; margin-top:0;">Quick Start Workflow</h3>
+                    <p style="color:#515154; line-height:1.7;">
+                        1. Set Aspect Ratio: Select a resolution preset (e.g., 9:16 for TikTok)<br>
+                        2. Compose Your Shot: Enable Composition Guides (Rule of Thirds)<br>
+                        3. Save Your View: Adjust camera and click <span class="highlight">Record View</span><br>
+                        4. Apply FX: Toggle CRT Mode or adjust Saturation in viewport
+                    </p>
+                </div>
+                
+                <div class="guide-step">
+                    <h3 style="color:#1a1a1a; margin-top:0;">Expert Tips & Shortcuts</h3>
+                    <p style="color:#515154; line-height:1.7;">
+                        • Press <span class="highlight">N</span>: Toggle Sidebar for Camera Tool panel<br>
+                        • Auto-Sync: FX settings automatically update Compositor nodes<br>
+                        • Lock View: Use "Lock Camera View" for intuitive navigation<br>
+                        • Bookmark Sync: Timeline markers automatically sync with camera bookmarks
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="container" style="padding-bottom: 100px;">
